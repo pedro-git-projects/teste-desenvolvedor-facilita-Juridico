@@ -1,11 +1,11 @@
-import NavLinks from "./Navlinks"
-import MobileMenu from "./MobileMenu"
+import NavLinks from "./Navlinks";
+import MobileMenu from "./MobileMenu";
 import DarkModeToggler from "../ui/DarkModeToggler";
 import reactLogo from "../../assets/react.svg";
 import { Link } from "react-router-dom";
 
 const Header: React.FC = () => (
-  < header >
+  <header>
     <div className="mx-auto flex h-16 max-w-screen-xl items-center justify-between px-4 sm:px-6 lg:px-8 mt-4 bg-white rounded-lg shadow dark:bg-gray-800">
       <div className="flex items-center gap-8">
         <Link to="/" className="block">
@@ -19,7 +19,7 @@ const Header: React.FC = () => (
         <MobileMenu />
       </div>
     </div>
-  </header >
-)
+  </header>
+);
 
 export default Header;
