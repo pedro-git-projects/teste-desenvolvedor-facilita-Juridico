@@ -1,0 +1,4 @@
+./backend/dist/*
+!./backend/dist/.gitkeep
+/**/node_modules
+./backend/.env
