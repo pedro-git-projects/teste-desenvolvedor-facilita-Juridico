@@ -1,7 +1,8 @@
 import http from "http";
 import Cliente from "../models/customer.js";
-import { addCustomer } from "./handlers.js";
+import { addCustomer, listCustomers } from "./handlers.js";
 import { Pool } from "pg";
+import FilterOptions from "../models/filterOptions.js";
 
 const Router = async (
   req: http.IncomingMessage,
@@ -47,6 +48,26 @@ const Router = async (
             res.end(`Error adding customer: ${error}\n`);
           }
         });
+      } else {
+        res.writeHead(405, { "Content-Type": "text/plain" });
+        res.end("Method Not Allowed\n");
+      }
+      break;
+    case "/list-customers":
+      if (req.method === "GET") {
+        const filterOptions: FilterOptions = {
+          nome: url.searchParams.get("nome") || undefined,
+          email: url.searchParams.get("email") || undefined,
+        };
+
+        try {
+          const customers = await listCustomers(dbConnection, filterOptions);
+          res.writeHead(200, { "Content-Type": "application/json" });
+          res.end(JSON.stringify(customers));
+        } catch (error) {
+          res.writeHead(500, { "Content-Type": "text/plain" });
+          res.end(`Error listing customers: ${error}\n`);
+        }
       } else {
         res.writeHead(405, { "Content-Type": "text/plain" });
         res.end("Method Not Allowed\n");
