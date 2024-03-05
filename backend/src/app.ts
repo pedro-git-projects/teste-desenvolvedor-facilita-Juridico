@@ -3,6 +3,7 @@ import http from "http";
 import pg from "pg";
 import { Pool } from "pg";
 import dotenv from "dotenv";
+import Router from "./rotues.js";
 
 export const version = "1.0.0";
 
@@ -72,12 +73,10 @@ export async function createApplication(config: Config): Promise<Application> {
     const dbConnection = await openDBConnection(config.db);
 
     const listenAndServe = () => {
-      const server = http.createServer((req, res) => {
-        res.writeHead(200, { "Content-Type": "text/plain" });
-        res.end("Hello World\n");
+      const server = http.createServer(Router);
+      server.listen(config.port, () => {
+        console.log("running server on port :", config.port);
       });
-
-      server.listen(config.port, () => {});
     };
 
     return {
