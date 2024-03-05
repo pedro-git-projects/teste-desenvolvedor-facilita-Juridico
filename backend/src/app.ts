@@ -75,7 +75,7 @@ export async function createApplication(config: Config): Promise<Application> {
     const listenAndServe = () => {
       const server = http.createServer(Router);
       server.listen(config.port, () => {
-        console.log("running server on port :", config.port);
+        console.log("running ", config.env ," server on port :", config.port);
       });
     };
 
