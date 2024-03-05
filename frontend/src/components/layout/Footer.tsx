@@ -4,17 +4,22 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
       <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-        <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400"> &copy; {new Date().getFullYear()} <a href="https://nilptr.dev" className="hover:underline">Criado por Pedro Martins Pereira</a>
+        <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+          {" "}
+          &copy; {new Date().getFullYear()}{" "}
+          <a href="https://nilptr.dev" className="hover:underline">
+            Criado por Pedro Martins Pereira
+          </a>
         </span>
         <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-          <Link
-            to="/consultar" className="hover:underline me-4 md:me-6">Consultar
+          <Link to="/consultar" className="hover:underline me-4 md:me-6">
+            Consultar
           </Link>
-          <Link
-            to="/cadastrar" className="hover:underline me-4 md:me-6">Cadastrar
+          <Link to="/cadastrar" className="hover:underline me-4 md:me-6">
+            Cadastrar
           </Link>
-          <Link
-            to="/rotas" className="hover:underline me-4 md:me-6">Rotas
+          <Link to="/rotas" className="hover:underline me-4 md:me-6">
+            Rotas
           </Link>
         </ul>
       </div>

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const NavLinks: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const NavLinks: React.FC = () => {
           <Link to="/consultar">Consultar</Link>
         </li>
         <li>
-          <Link to="/cadastarar">Cadastrar</Link>
+          <Link to="/cadastrar">Cadastrar</Link>
         </li>
         <li>
           <Link to="/rotas">Rotas</Link>
