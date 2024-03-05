@@ -2,3 +2,5 @@
 !./backend/dist/.gitkeep
 /**/node_modules
 ./backend/.env
+./backend/sql/
+./backend/postgres-data/

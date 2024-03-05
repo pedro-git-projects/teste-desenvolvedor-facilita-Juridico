@@ -1,5 +1,6 @@
 node_modules/
 .env
-./backend/dist/*
-!./backend/dist/.gitkeep
-
+./dist/*
+!./dist/.gitkeep
+./postgres-data
+./sql

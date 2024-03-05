@@ -1,12 +1,15 @@
-import http from "http";
+import { createApplication, createConfig } from "./app.js";
 
-const server = http.createServer(async (req, res) => {
-  if (req.url === "/" && req.method === "GET") {
-    res.statusCode = 200;
-    res.end();
+async function main() {
+  try {
+    const config = createConfig(3000, 'development');
+    const application = await createApplication(config);
+    application.listenAndServe()
+  } catch (error) {
+    console.error('Error starting application:', error);
+    process.exit(1); 
   }
-});
+}
 
-server.listen(8080, () => {
-  console.log("Server running on localhos:8080")
-});
+main();
+
