@@ -15,5 +15,12 @@
     "@types/node": "^20.11.24",
     "prettier": "^3.2.5",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@types/pg": "^8.11.2",
+    "dotenv": "^16.4.5",
+    "pg": "^8.11.3",
+    "pino": "^8.19.0",
+    "pino-http": "^9.0.0"
   }
 }
