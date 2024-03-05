@@ -1,9 +1,8 @@
 import { HttpLogger, pinoHttp } from "pino-http";
-import http from 'http';
-import pg from 'pg';
+import http from "http";
+import pg from "pg";
 import { Pool } from "pg";
-import dotenv from 'dotenv';
-
+import dotenv from "dotenv";
 
 export const version = "1.0.0";
 
@@ -41,10 +40,7 @@ export function createDB(): DB {
   };
 }
 
-export function createConfig(
-  port: number,
-  env: Env,
-): Config {
+export function createConfig(port: number, env: Env): Config {
   const db = createDB();
   return {
     port,
@@ -54,20 +50,18 @@ export function createConfig(
 }
 
 export async function openDBConnection(dbConfig: DB): Promise<Pool> {
-  const pool = new pg.Pool(
-    {
-      user: dbConfig.user,
-      host: dbConfig.host,
-      database: dbConfig.database,
-      password: dbConfig.password,
-      port: dbConfig.port,
-    }
-  );
+  const pool = new pg.Pool({
+    user: dbConfig.user,
+    host: dbConfig.host,
+    database: dbConfig.database,
+    password: dbConfig.password,
+    port: dbConfig.port,
+  });
   try {
     await pool.connect();
     return pool;
   } catch (error) {
-    console.error('Error connecting to database:', error);
+    console.error("Error connecting to database:", error);
     throw error;
   }
 }
@@ -79,22 +73,21 @@ export async function createApplication(config: Config): Promise<Application> {
 
     const listenAndServe = () => {
       const server = http.createServer((req, res) => {
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('Hello World\n');
+        res.writeHead(200, { "Content-Type": "text/plain" });
+        res.end("Hello World\n");
       });
 
-      server.listen(config.port, () => {
-      });
+      server.listen(config.port, () => {});
     };
 
     return {
       config,
       dbConnection,
       logger,
-      listenAndServe
+      listenAndServe,
     };
   } catch (error) {
-    console.error('Error creating application:', error);
+    console.error("Error creating application:", error);
     throw error;
   }
 }
