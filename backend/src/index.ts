@@ -1,4 +1,4 @@
-import { createApplication, createConfig } from "./app.js";
+import { createApplication, createConfig } from "./app/app.js";
 
 async function main() {
   try {

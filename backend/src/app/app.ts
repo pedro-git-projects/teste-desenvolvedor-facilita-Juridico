@@ -73,9 +73,11 @@ export async function createApplication(config: Config): Promise<Application> {
     const dbConnection = await openDBConnection(config.db);
 
     const listenAndServe = () => {
-      const server = http.createServer(Router);
+      const server = http.createServer((req, res) =>
+        Router(req, res, dbConnection),
+      );
       server.listen(config.port, () => {
-        console.log("running ", config.env ," server on port :", config.port);
+        console.log("running ", config.env, " server on port :", config.port);
       });
     };
 
