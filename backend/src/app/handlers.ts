@@ -1,6 +1,7 @@
 import { Pool } from "pg";
 import Cliente from "../models/customer.js";
 import FilterOptions from "../models/filterOptions.js";
+import { calculateShortestPath } from "./dijkstra.js";
 
 export async function addCustomer(
   dbConnection: Pool,
@@ -58,6 +59,17 @@ export async function listCustomers(
     return result.rows;
   } catch (error) {
     console.error("Error listing customers:", error);
+    throw error;
+  }
+}
+
+export async function calculateShortestRoute(dbConnection: Pool) {
+  try {
+    const clientes = await listCustomers(dbConnection);
+    const shortestPath = calculateShortestPath(clientes);
+    return shortestPath;
+  } catch (error) {
+    console.error("Error calculating shortest route:", error);
     throw error;
   }
 }
