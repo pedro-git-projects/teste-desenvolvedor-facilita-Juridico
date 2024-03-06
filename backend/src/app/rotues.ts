@@ -1,6 +1,10 @@
 import http from "http";
 import Cliente from "../models/customer.js";
-import { addCustomer, listCustomers } from "./handlers.js";
+import {
+  addCustomer,
+  calculateShortestRoute,
+  listCustomers,
+} from "./handlers.js";
 import { Pool } from "pg";
 import FilterOptions from "../models/filterOptions.js";
 
@@ -73,6 +77,23 @@ const Router = async (
         res.end("Method Not Allowed\n");
       }
       break;
+    case "/shortest-path":
+      if (req.method === "GET") {
+        try {
+          const shortestPath = await calculateShortestRoute(dbConnection);
+          res.writeHead(200, { "Content-Type": "application/json" });
+          res.end(JSON.stringify(shortestPath));
+        } catch (error) {
+          console.log(error);
+          res.writeHead(500, { "Content-Type": "text/plain" });
+          res.end(`Error calculating shortest path: ${error}\n`);
+        }
+      } else {
+        res.writeHead(405, { "Content-Type": "text/plain" });
+        res.end("Method Not Allowed\n");
+      }
+      break;
+
     default:
       res.writeHead(404, { "Content-Type": "text/plain" });
       res.end("Not Found\n");
