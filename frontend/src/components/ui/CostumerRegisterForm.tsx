@@ -140,7 +140,7 @@ const CostumerRegisterForm: React.FC = () => {
             <input
               type="text"
               name="nome"
-              className={`w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm ${
+              className={`w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm dark:bg-gray-800 dark:text-white dark:border-gray-800 ${
                 errors.nome ? "border-red-500" : ""
               }`}
               placeholder="Insira o nome"
@@ -161,7 +161,7 @@ const CostumerRegisterForm: React.FC = () => {
             <input
               type="email"
               name="email"
-              className={`w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm ${
+              className={`w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm dark:bg-gray-800 dark:text-white dark:border-gray-800 ${
                 errors.email ? "border-red-500" : ""
               }`}
               placeholder="Enter email"
@@ -182,7 +182,7 @@ const CostumerRegisterForm: React.FC = () => {
             <input
               type="text"
               name="telefone"
-              className={`w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm ${
+              className={`w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm dark:bg-gray-800 dark:text-white dark:border-gray-800 ${
                 errors.telefone ? "border-red-500" : ""
               }`}
               placeholder="Insira o telefone"
@@ -203,7 +203,7 @@ const CostumerRegisterForm: React.FC = () => {
             <input
               type="number"
               name="coordenada_x"
-              className={`w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm ${
+              className={`w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm dark:bg-gray-800 dark:text-white dark:border-gray-800 ${
                 errors.coordenada_x ? "border-red-500" : ""
               }`}
               placeholder="Insira o número da coordenada x"
@@ -224,7 +224,7 @@ const CostumerRegisterForm: React.FC = () => {
             <input
               type="number"
               name="coordenada_y"
-              className={`w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm ${
+              className={`w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm dark:bg-gray-800 dark:text-white dark:border-gray-800 ${
                 errors.coordenada_y ? "border-red-500" : ""
               }`}
               placeholder="Insira o número da coordenada y"
